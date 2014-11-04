@@ -1,4 +1,5 @@
 class XHR
+  script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
   constructor: (el) ->
     @element(el)
     @request = new XMLHttpRequest()
@@ -15,6 +16,7 @@ class XHR
 
   send: (src, method = 'GET', data) =>
     @request.open(method, src)
+    @request.setRequestHeader('accept', "*/*;q=0.5, #{@script}")
     @request.setRequestHeader('X-Requested-With', "XMLHttpRequest")
 
     @request.send(data)

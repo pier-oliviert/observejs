@@ -46,7 +46,7 @@ Ethereal.Models.add Todos, 'Todo.List'
 
 ```ruby
   #views/todos/create.js.erb
-  e.html = "<%= j render @todo %>".toHTML()
+  e.html = "<%= j render(@todo) %>".toHTML()
 ```
 
 ```ruby

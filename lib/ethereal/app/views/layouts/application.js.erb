@@ -1,0 +1,6 @@
+(function(target) {
+  var e = new CustomEvent("<%= j "#{controller_name}:#{action_name}" %>", {bubbles: true})
+  <%= yield %>
+  target.dispatchEvent(e)
+})
+

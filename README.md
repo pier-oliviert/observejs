@@ -20,12 +20,14 @@ Then add this line to application.js
 Ethereal is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
 
 ```erb
+<!-- views/todos/index.html.erb -->
 <%= content_tag :ol, as: 'Todo.List', do %>
   <%= render @todos %>
 <% end %>
 ```
 
 ```coffee
+# assets/javascripts/todos/list.js.coffee 
 class Todos
   # @element() always return the element to which your object is bound.
 

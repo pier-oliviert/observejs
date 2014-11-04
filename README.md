@@ -1,6 +1,6 @@
 # Ethereal
 
-Event based JavaScript framework tailor made for Ruby on rails.
+Event based JavaScript framework tailored made for Ruby on rails.
 
 ## Installation
 

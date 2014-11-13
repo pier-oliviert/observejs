@@ -19,8 +19,6 @@ namespace :test do
   end
 end
 
-
-
 desc 'A thin rails server instance for development and testing'
 task :server do
 

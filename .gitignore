@@ -6,7 +6,7 @@
 /doc/
 /pkg/
 /spec/reports/
-/tmp/
+tmp/
 *.bundle
 *.so
 *.o

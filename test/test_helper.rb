@@ -13,3 +13,9 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
 end
 
+class ActionDispatch::IntegrationTest
+  setup do
+    @routes = Rails.application.routes
+  end
+end
+

@@ -30,12 +30,17 @@ listen = (e) ->
     return false
 
   document.addEventListener 'click', (e) ->
+    el = e.target
+    while el? && !(el instanceof HTMLAnchorElement)
+      el = el.parentElement
 
-    if e.target.getAttribute('disabled')? || e.target.dataset['remote'] != 'true'
+    return unless el?
+
+    if el.getAttribute('disabled')? || el.dataset['remote'] != 'true'
       return
 
-    xhr = new Ethereal.XHR(e.target)
-    xhr.send(e.target.getAttribute('href'))
+    xhr = new Ethereal.XHR(el)
+    xhr.send(el.getAttribute('href'))
 
     e.preventDefault()
     return false

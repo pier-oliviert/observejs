@@ -1,15 +1,15 @@
 class God
   update: (el) =>
-    model = el.getAttribute(Ethereal.attributeName)
+    model = el.getAttribute(Joint.attributeName)
     if model?
       @create(el, model)
     else
       @destroy(el)
 
   create: (el) =>
-    model = el.getAttribute(Ethereal.attributeName)
+    model = el.getAttribute(Joint.attributeName)
     if @modelExists(model)
-      el.instance = new Ethereal.Models.klass[model](el)
+      el.instance = new Joint.Models.klass[model](el)
 
       el.instance.element = ->
         el
@@ -28,7 +28,7 @@ class God
         el.instance.loaded()
 
     else
-      throw "error: #{model} is not registered. Add your model with Ethereal.Models.add(#{model})"
+      throw "error: #{model} is not registered. Add your model with Joint.Models.add(#{model})"
 
   destroy: (el) =>
     el.instance.on.events?.forEach (event) ->
@@ -36,8 +36,8 @@ class God
 
 
   modelExists: (name) =>
-    Ethereal.Models.klass[name]?
+    Joint.Models.klass[name]?
     
 
-Ethereal.God = new God
+Joint.God = new God
 

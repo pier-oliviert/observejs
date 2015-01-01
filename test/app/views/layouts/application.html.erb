@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JointJS Test Suite</title>
+    <%= javascript_include_tag "application", 'http://code.jquery.com/qunit/qunit-1.16.0.js', "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

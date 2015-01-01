@@ -1,0 +1,6 @@
+#= require 'joint/ext'
+#= require 'joint/base'
+#= require 'joint/god'
+#= require 'joint/model'
+#= require 'joint/watcher'
+#= require 'joint/xhr'

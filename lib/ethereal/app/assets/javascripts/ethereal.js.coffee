@@ -1,6 +1,0 @@
-#= require 'ethereal/ext'
-#= require 'ethereal/base'
-#= require 'ethereal/god'
-#= require 'ethereal/model'
-#= require 'ethereal/watcher'
-#= require 'ethereal/xhr'

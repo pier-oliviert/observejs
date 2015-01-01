@@ -5,4 +5,4 @@ class Models
       name = kls.name
     @klass[name] = kls
 
-Ethereal.Models = new Models
+Joint.Models = new Models

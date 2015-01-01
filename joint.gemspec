@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ethereal/version'
+require 'joint/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ethereal"
-  spec.version       = Ethereal::VERSION
+  spec.name          = "joint"
+  spec.version       = Joint::VERSION
   spec.authors       = ["Pier-Olivier Thibault"]
   spec.email         = ["pothibo@gmail.com"]
   spec.summary       = %q{Event based JavaScript framework tailored for Ruby on rails.}

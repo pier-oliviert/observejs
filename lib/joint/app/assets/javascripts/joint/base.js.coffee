@@ -1,8 +1,8 @@
-@Ethereal = {
+@Joint = {
   attributeName: 'as'
 }
 
-@Ethereal.isDOM = (el) ->
+@Joint.isDOM = (el) ->
   el instanceof HTMLDocument ||
   el instanceof HTMLElement
 
@@ -10,21 +10,21 @@ listen = (e) ->
   if e.type && e.type == 'DOMContentLoaded'
     document.removeEventListener('DOMContentLoaded', listen)
 
-  Ethereal.Watcher(document, {
+  Joint.Watcher(document, {
       attributes: true,
       subtree: true,
       childList: true,
-      attributeFilter: [Ethereal.attributeName],
+      attributeFilter: [Joint.attributeName],
       characterData: true
   })
 
-  Ethereal.Watcher().inspect(document.body)
+  Joint.Watcher().inspect(document.body)
 
   document.addEventListener 'submit', (e) ->
     if e.target.getAttribute('disabled')? || e.target.dataset['remote'] != 'true'
       return
 
-    Ethereal.XHR.Form(e.target)
+    Joint.XHR.Form(e.target)
 
     e.preventDefault()
     return false
@@ -39,7 +39,7 @@ listen = (e) ->
     if el.getAttribute('disabled')? || el.dataset['remote'] != 'true'
       return
 
-    xhr = new Ethereal.XHR(el)
+    xhr = new Joint.XHR(el)
     xhr.send(el.getAttribute('href'))
 
     e.preventDefault()
@@ -50,6 +50,3 @@ if document.readyState == 'complete'
   listen()
 else
   document.addEventListener('DOMContentLoaded', listen)
-
-
-

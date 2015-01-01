@@ -1,5 +1,11 @@
-test:
+default: &default
   adapter: 'sqlite3'
   database: ":memory:" 
   pool: 5
   timeout: 5000
+
+development:
+  <<: *default
+
+test:
+  <<: *default

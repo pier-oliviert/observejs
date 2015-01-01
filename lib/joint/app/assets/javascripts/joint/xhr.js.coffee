@@ -31,4 +31,4 @@ class XHR
     xhr
 
 
-Ethereal.XHR = XHR
+Joint.XHR = XHR

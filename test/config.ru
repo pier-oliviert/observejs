@@ -1,0 +1,1 @@
+run JointTest::Application.initialize!

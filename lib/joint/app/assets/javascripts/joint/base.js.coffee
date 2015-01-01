@@ -1,22 +1,7 @@
-@Joint = {
-  attributeName: 'as'
-}
-
-@Joint.isDOM = (el) ->
-  el instanceof HTMLDocument ||
-  el instanceof HTMLElement
-
 listen = (e) ->
   if e.type && e.type == 'DOMContentLoaded'
     document.removeEventListener('DOMContentLoaded', listen)
 
-  Joint.Watcher(document, {
-      attributes: true,
-      subtree: true,
-      childList: true,
-      attributeFilter: [Joint.attributeName],
-      characterData: true
-  })
 
   Joint.Watcher().inspect(document.body)
 
@@ -45,8 +30,3 @@ listen = (e) ->
     e.preventDefault()
     return false
 
-
-if document.readyState == 'complete'
-  listen()
-else
-  document.addEventListener('DOMContentLoaded', listen)

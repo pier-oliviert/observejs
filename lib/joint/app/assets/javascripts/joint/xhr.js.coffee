@@ -31,4 +31,3 @@ class XHR
     xhr
 
 
-Joint.XHR = XHR

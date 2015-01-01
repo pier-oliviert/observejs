@@ -1,14 +1,24 @@
-instance = undefined
-
 class Watcher
-  constructor: (target, config = {}) ->
+  constructor: ->
+    document.addEventListener('joint:loaded', @start)
+
+  start: =>
     @observer = new MutationObserver(@observed)
-    @observer.observe(target, config)
+    @observer.observe(document, {
+      attributes: true,
+      subtree: true,
+      childList: true,
+      attributeFilter: [Joint.attributeName],
+      characterData: true
+    })
+
+    window.Joint.Watcher = this
+    @inspect(document)
 
   observed: (mutations) =>
     mutations.forEach (mutation) =>
       if mutation.type == 'attributes'
-        Joint.God.update(target)
+        Joint.Creator.update(target)
       else
         @add(mutation.addedNodes)
         @destroy(mutation.removedNodes)
@@ -18,33 +28,23 @@ class Watcher
     for node in nodes
       continue unless Joint.isDOM(node)
       if node.hasAttribute(Joint.attributeName)
-        Joint.God.create(node, node.getAttribute(Ethereal.attributeName))
+        Joint.Creator.create(node, node.getAttribute(Joint.attributeName))
 
       for child in node.querySelectorAll("[#{Joint.attributeName}]")
-        Joint.God.create(child, child.getAttribute(Ethereal.attributeName))
+        Joint.Creator.create(child, child.getAttribute(Joint.attributeName))
 
   destroy: (nodes) =>
     for node in nodes
       continue unless Joint.isDOM(node)
       if node.hasAttribute(Joint.attributeName)
-        Joint.God.destroy(node)
+        Joint.Creator.destroy(node)
 
       for child in node.querySelectorAll("[#{Joint.attributeName}]")
-        Joint.God.destroy(child)
+        Joint.Creator.destroy(child)
 
   inspect: (node) ->
     if Joint.isDOM(node)
       found = node.querySelectorAll("[#{Joint.attributeName}]")
-      Joint.God.create(el) for el in found
+      Joint.Creator.create(el) for el in found
 
-# !! **************************************** !! #
-
-Joint.Watcher = ->
-  unless instance?
-    i = 0
-    target = null
-    target = if Joint.isDOM(arguments[i]) then arguments[i++] else document
-    instance = new Watcher(target, arguments[i])
-
-  instance
-
+new Watcher()

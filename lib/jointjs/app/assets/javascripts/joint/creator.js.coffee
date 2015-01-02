@@ -1,7 +1,4 @@
 class Creator
-  constructor: ->
-    document.addEventListener 'joint:loaded', =>
-      window.Joint.Creator = this
 
   update: (el) =>
     model = el.getAttribute(Joint.attributeName)
@@ -38,5 +35,4 @@ class Creator
     el.instance.on.events?.forEach (event) ->
       event[1].removeEventListener(event[0], event[2])
 
-
-new Creator()
+@Joint.Creator = new Creator()

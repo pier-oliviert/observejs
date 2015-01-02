@@ -12,7 +12,6 @@ class Watcher
       characterData: true
     })
 
-    window.Joint.Watcher = this
     @inspect(document)
 
   observed: (mutations) =>
@@ -47,4 +46,4 @@ class Watcher
       found = node.querySelectorAll("[#{Joint.attributeName}]")
       Joint.Creator.create(el) for el in found
 
-new Watcher()
+@Joint.Watcher = new Watcher()

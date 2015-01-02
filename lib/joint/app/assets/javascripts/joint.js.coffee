@@ -1,8 +1,6 @@
 #= require 'joint/ext'
-#= require 'joint/base'
 #= require 'joint/creator'
 #= require 'joint/watcher'
-#= require 'joint/xhr'
 
 class Joint
   attributeName: 'as'

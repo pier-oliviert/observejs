@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'joint/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "joint"
-  spec.version       = Joint::VERSION
+  spec.name          = "jointjs"
+  spec.version       = JointJS::VERSION
   spec.authors       = ["Pier-Olivier Thibault"]
   spec.email         = ["pothibo@gmail.com"]
   spec.summary       = %q{Event based JavaScript framework tailored for Ruby on rails.}

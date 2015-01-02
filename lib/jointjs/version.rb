@@ -1,3 +1,3 @@
-module Joint
+module JointJS
   VERSION = "0.0.4"
 end

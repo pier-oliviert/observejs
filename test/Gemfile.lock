@@ -1,7 +1,7 @@
 PATH
-  remote: ~/Develop/joint
+  remote: ~/Develop/jointjs
   specs:
-    joint (0.0.4)
+    jointjs (0.0.4)
 
 GEM
   remote: https://rubygems.org/
@@ -130,7 +130,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  joint!
+  jointjs!
   jquery-rails
   rails
   sqlite3

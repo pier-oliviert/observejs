@@ -1,3 +1,4 @@
 JointTest::Application.routes.draw do
-  root to: 'test#index'
+  resources :todos
+  root to: 'todos#index'
 end

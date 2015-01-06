@@ -1,4 +1,3 @@
-require "bundler/gem_tasks"
-require_relative "test/test_helper"
+require File.expand_path('../test/application', __FILE__)
 
-JointJS::Application.load_tasks
+JointTest::Application.load_tasks

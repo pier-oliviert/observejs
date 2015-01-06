@@ -1,0 +1,11 @@
+<article>
+  <%= form_for :todo, remote: true, html: { id: 'NewTodo' } do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+  <% end %>
+  <ol class='test items' as='List'>
+    <% @todos.each do |todo| %>
+      <%= render todo %>
+    <% end %>
+  </ol>
+</article>

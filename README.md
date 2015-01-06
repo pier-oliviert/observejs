@@ -17,7 +17,7 @@ Then add this line to application.js
 ```
 ## Usage
 
-Ethereal is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
+JointJSe is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
 
 ```erb
 <!-- views/todos/index.html.erb -->
@@ -57,7 +57,7 @@ Some notes:
 
 - Automatic instantiation. No need to wrap things in DOMContentReady anymore.
 - Events are built following the "controller:action" pattern.
-- A callback (@loaded) is called right after Ethereal has instantiated an object.
+- A callback (@loaded) is called right after JointJS has instantiated an object.
 - In *.js.erb, an event is created. You can set HTML to the event object.
 - To ease the process, a toHTML() method has been added to the String object (JS).
 - You need to register any class you create through the ```Joint.bind 'name', Class```. The name is the attribute you set in your DOM.

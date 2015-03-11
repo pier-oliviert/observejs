@@ -1,4 +1,4 @@
-# Ethereal
+# JointJS
 
 Event based JavaScript framework tailored made for Ruby on rails.
 
@@ -7,17 +7,17 @@ Event based JavaScript framework tailored made for Ruby on rails.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ethereal'
+gem 'jointjs'
 ```
 
 Then add this line to application.js
 
 ```js
-//= require 'ethereal'
+//= require 'joint'
 ```
 ## Usage
 
-Ethereal is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
+JointJSe is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
 
 ```erb
 <!-- views/todos/index.html.erb -->
@@ -28,7 +28,7 @@ Ethereal is an event based framework that manages the life cycle of JavaScript o
 
 ```coffee
 # assets/javascripts/todos/list.js.coffee 
-class Todos
+Joint.bind 'Todo.List', class
   # @element() always return the element to which your object is bound.
 
   loaded: =>
@@ -41,7 +41,6 @@ class Todos
   delete: (e) =>
     @element().querySelector("[tid=#{e.todoId}]")?.remove()
 
-Ethereal.Models.add Todos, 'Todo.List'
 ```
 
 ```ruby
@@ -58,9 +57,9 @@ Some notes:
 
 - Automatic instantiation. No need to wrap things in DOMContentReady anymore.
 - Events are built following the "controller:action" pattern.
-- A callback (@loaded) is called right after Ethereal has instantiated an object.
+- A callback (@loaded) is called right after JointJS has instantiated an object.
 - In *.js.erb, an event is created. You can set HTML to the event object.
 - To ease the process, a toHTML() method has been added to the String object (JS).
-- You need to register any class you create through the ```Ethereal.Models.add Class, 'name'```. The name is the attribute you set in your DOM.
+- You need to register any class you create through the ```Joint.bind 'name', Class```. The name is the attribute you set in your DOM.
 
 

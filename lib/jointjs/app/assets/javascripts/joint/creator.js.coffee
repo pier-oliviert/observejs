@@ -10,6 +10,9 @@ class Creator
   create: (el) =>
     model = el.getAttribute(Joint.attributeName)
     if Joint.cache[model]?
+      if el.instance?
+        return
+
       el.instance = new Joint.cache[model](el)
 
       el.instance.element = ->

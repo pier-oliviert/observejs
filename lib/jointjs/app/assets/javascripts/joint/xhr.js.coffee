@@ -40,6 +40,8 @@ class Response
   process: (e) =>
     if e.target.status >= 200 && e.target.status < 300
       @success(e)
+    else
+      @failure(e)
 
   success: (e) =>
     if e.target.responseText.length > 1

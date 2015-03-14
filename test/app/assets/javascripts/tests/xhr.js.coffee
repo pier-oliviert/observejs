@@ -19,7 +19,7 @@ document.addEventListener 'QUnit:Joint:Initialized', ->
 
     form = NewTodo.cloneNode(true)
 
-    form.addEventListener 'Joint:XHR:failed', (e) ->
+    form.addEventListener 'Joint:XHR:Failed', (e) ->
       assert.equal(form, e.response.target.element)
       passed()
 

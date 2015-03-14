@@ -1,7 +1,7 @@
 PATH
-  remote: /Users/pothibo/Develop/jointjs
+  remote: /Users/pothibo/Develop/joint
   specs:
-    jointjs (0.0.4)
+    jointjs (0.0.5)
 
 GEM
   remote: https://rubygems.org/

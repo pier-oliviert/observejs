@@ -14,6 +14,17 @@ document.addEventListener 'QUnit:Joint:Initialized', ->
       assert.equal(r.target.status, 200)
       passed()
 
+  QUnit.test 'Failed AJAX will emit and event', (assert) ->
+    passed = assert.async()
+
+    form = NewTodo.cloneNode(true)
+
+    form.addEventListener 'Joint:XHR:failed', (e) ->
+      assert.equal(form, e.response.target.element)
+      passed()
+
+    form.setAttribute('action', 'http://error.domain.cyz')
+    Joint.XHR.send(form)
 
 
   QUnit.test 'If a form data is passed and the request is GET, hardcode the params in the URL', (assert) ->

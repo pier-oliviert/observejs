@@ -31,12 +31,30 @@ class XHRData
 
     formData
 
-class XHR
-  script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+class Response
+  constructor: (@xhr) ->
+    @xhr.request.addEventListener 'load', @process
+    @xhr.request.addEventListener 'error', @failure
+    @xhr.request.addEventListener 'abort', @failure
 
-  @completed: (e) ->
+  process: (e) =>
+    if e.target.status >= 200 && e.target.status < 300
+      @success(e)
+    else
+      @failure(e)
+
+  success: (e) =>
     if e.target.responseText.length > 1
       eval(e.target.responseText)(e.target.element)
+
+  failure: (e) =>
+    event = new CustomEvent("ObserveJS:XHR:Failed", {bubbles: true})
+    event.response = e
+    @xhr.request.element.dispatchEvent(event)
+
+
+class XHR
+  script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
 
   @send: (el) ->
 
@@ -48,7 +66,7 @@ class XHR
     @data = new XHRData(el)
     @request = new XMLHttpRequest()
     @request.element = el
-    @request.addEventListener 'load', XHR.completed
+    @response = new Response(this)
 
     @method = el.getAttribute('method') || 'GET'
 
@@ -82,7 +100,7 @@ class XHR
     @request.send(@data.serialize())
 
 
-Joint.XHR = XHR
+ObserveJS.XHR = XHR
 
 document.addEventListener 'submit', (e) =>
   if e.target.getAttribute('disabled')? || e.target.dataset['remote'] != 'true'
@@ -107,4 +125,3 @@ document.addEventListener 'click', (e) =>
 
   e.preventDefault()
   return false
-

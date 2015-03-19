@@ -1,4 +1,4 @@
-Joint.bind 'List', class
+ObserveJS.bind 'List', class
   loaded: ->
     @on 'todos:create', document, @append
 

@@ -1,11 +1,11 @@
-class Joint
+class ObserveJS
   attributeName: 'as'
 
   constructor: ->
     @cache = {}
 
   initialize: =>
-    event = new CustomEvent('joint:loaded')
+    event = new CustomEvent('observejs:loaded')
     document.dispatchEvent(event)
 
   isDOM: (el) ->
@@ -15,4 +15,4 @@ class Joint
   bind: (name, kls) =>
     @cache[name] = kls
 
-window.Joint = new Joint()
+window.ObserveJS = new ObserveJS()

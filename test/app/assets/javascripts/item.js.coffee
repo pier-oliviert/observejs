@@ -1,2 +1,2 @@
-Joint.bind 'List.Item', ->
+ObserveJS.bind 'List.Item', ->
   loaded: ->

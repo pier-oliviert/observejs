@@ -11,7 +11,6 @@ document.addEventListener 'readystatechange', (e) ->
     document.querySelector('ol.test.items').appendChild(li)
     assert.ok count + 1 == document.querySelectorAll("li[as='List.Item']").length, "Should instantiate a new instance for the new item"
     li.remove()
-  
-  event = new CustomEvent('QUnit:Joint:Initialized')
-  document.dispatchEvent(event)
 
+  event = new CustomEvent('QUnit:ObserveJS:Initialized')
+  document.dispatchEvent(event)

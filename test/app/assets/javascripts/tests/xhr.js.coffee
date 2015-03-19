@@ -1,4 +1,4 @@
-document.addEventListener 'QUnit:Joint:Initialized', ->
+document.addEventListener 'QUnit:ObserveJS:Initialized', ->
   QUnit.test 'Send an AJAX for any element that has a href attribute', (assert) ->
     el = document.querySelector("li[as='List.Item']")
     assert.ok(true)
@@ -9,11 +9,22 @@ document.addEventListener 'QUnit:Joint:Initialized', ->
     form = NewTodo
     form.querySelector('#todo_title').value = "Creating a new todo"
 
-    xhr = Joint.XHR.send(form)
+    xhr = ObserveJS.XHR.send(form)
     xhr.request.addEventListener 'load', (r) ->
       assert.equal(r.target.status, 200)
       passed()
 
+  QUnit.test 'Failed AJAX will emit and event', (assert) ->
+    passed = assert.async()
+
+    form = NewTodo.cloneNode(true)
+
+    form.addEventListener 'ObserveJS:XHR:Failed', (e) ->
+      assert.equal(form, e.response.target.element)
+      passed()
+
+    form.setAttribute('action', 'http://error.domain.cyz')
+    ObserveJS.XHR.send(form)
 
 
   QUnit.test 'If a form data is passed and the request is GET, hardcode the params in the URL', (assert) ->

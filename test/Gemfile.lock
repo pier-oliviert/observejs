@@ -1,7 +1,7 @@
 PATH
-  remote: /Users/pothibo/Develop/jointjs
+  remote: /Users/pothibo/Develop/joint
   specs:
-    jointjs (0.0.4)
+    observejs (0.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -153,8 +153,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
-  jointjs!
   jquery-rails
+  observejs!
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   spring

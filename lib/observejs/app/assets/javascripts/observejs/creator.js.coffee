@@ -1,19 +1,19 @@
 class Creator
 
   update: (el) =>
-    model = el.getAttribute(Joint.attributeName)
+    model = el.getAttribute(ObserveJS.attributeName)
     if model?
       @create(el, model)
     else
       @destroy(el)
 
   create: (el) =>
-    model = el.getAttribute(Joint.attributeName)
-    if Joint.cache[model]?
+    model = el.getAttribute(ObserveJS.attributeName)
+    if ObserveJS.cache[model]?
       if el.instance?
         return
 
-      el.instance = new Joint.cache[model](el)
+      el.instance = new ObserveJS.cache[model](el)
 
       el.instance.element = ->
         el
@@ -32,10 +32,10 @@ class Creator
         el.instance.loaded()
 
     else
-      throw "error: #{model} is not registered. Add your model with Joint.Models.add(#{model})"
+      throw "error: #{model} is not registered. Add your model with ObserveJS.Models.add(#{model})"
 
   destroy: (el) =>
     el.instance.on.events?.forEach (event) ->
       event[1].removeEventListener(event[0], event[2])
 
-@Joint.Creator = new Creator()
+@ObserveJS.Creator = new Creator()

@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jointjs/version'
+require 'observejs/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jointjs"
-  spec.version       = JointJS::VERSION
+  spec.name          = "observejs"
+  spec.version       = ObserveJS::VERSION
   spec.authors       = ["Pier-Olivier Thibault"]
   spec.email         = ["pothibo@gmail.com"]
   spec.summary       = %q{Event based JavaScript framework tailored for Ruby on rails.}

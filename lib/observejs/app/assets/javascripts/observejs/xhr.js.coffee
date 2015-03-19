@@ -48,7 +48,7 @@ class Response
       eval(e.target.responseText)(e.target.element)
 
   failure: (e) =>
-    event = new CustomEvent("Joint:XHR:Failed", {bubbles: true})
+    event = new CustomEvent("ObserveJS:XHR:Failed", {bubbles: true})
     event.response = e
     @xhr.request.element.dispatchEvent(event)
 
@@ -100,7 +100,7 @@ class XHR
     @request.send(@data.serialize())
 
 
-Joint.XHR = XHR
+ObserveJS.XHR = XHR
 
 document.addEventListener 'submit', (e) =>
   if e.target.getAttribute('disabled')? || e.target.dataset['remote'] != 'true'

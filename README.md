@@ -1,4 +1,4 @@
-# JointJS
+# ObserveJS
 
 Event based JavaScript framework tailored made for Ruby on rails.
 
@@ -7,17 +7,17 @@ Event based JavaScript framework tailored made for Ruby on rails.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'jointjs'
+gem 'observejs'
 ```
 
 Then add this line to application.js
 
 ```js
-//= require 'joint'
+//= require 'observejs'
 ```
 ## Usage
 
-JointJSe is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
+ObserveJS is an event based framework that manages the life cycle of JavaScript objects. Here's a simple Todo where you can dynamically add/remove items on the list.
 
 ```erb
 <!-- views/todos/index.html.erb -->
@@ -28,7 +28,7 @@ JointJSe is an event based framework that manages the life cycle of JavaScript o
 
 ```coffee
 # assets/javascripts/todos/list.js.coffee 
-Joint.bind 'Todo.List', class
+ObserveJS.bind 'Todo.List', class
   # @element() always return the element to which your object is bound.
 
   loaded: =>
@@ -57,9 +57,9 @@ Some notes:
 
 - Automatic instantiation. No need to wrap things in DOMContentReady anymore.
 - Events are built following the "controller:action" pattern.
-- A callback (@loaded) is called right after JointJS has instantiated an object.
+- A callback (@loaded) is called right after ObserveJS has instantiated an object.
 - In *.js.erb, an event is created. You can set HTML to the event object.
 - To ease the process, a toHTML() method has been added to the String object (JS).
-- You need to register any class you create through the ```Joint.bind 'name', Class```. The name is the attribute you set in your DOM.
+- You need to register any class you create through the ```ObserveJS.bind 'name', Class```. The name is the attribute you set in your DOM.
 
 

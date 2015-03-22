@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/pothibo/Develop/joint
+  remote: /Users/pothibo/Develop/observejs
   specs:
     observejs (0.0.6)
 

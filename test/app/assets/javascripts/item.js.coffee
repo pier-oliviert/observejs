@@ -1,2 +1,2 @@
-ObserveJS.bind 'List.Item', ->
+ObserveJS.bind 'List.Item', class
   loaded: ->

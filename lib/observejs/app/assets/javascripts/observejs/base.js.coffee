@@ -20,10 +20,9 @@ class ObserveJS
       unless tmpl?
         throw "Template Error: Couldn't find a template matching #{name}"
         return
-      tmpl.cache = {}
       tmpl
 
     kls.prototype.retrieve = (selector) ->
-      @template().cache[selector] ||= @template().content.querySelector(selector).cloneNode(true)
+      @element().querySelector(selector) || @template().content.querySelector(selector).cloneNode(true)
 
 window.ObserveJS = new ObserveJS()

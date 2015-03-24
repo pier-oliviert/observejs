@@ -21,9 +21,7 @@ class ObserveJS
         throw "Template Error: Couldn't find a template matching #{name}"
         return
       tmpl.cache = {}
-      kls.prototype.template = () ->
-        tmpl
-      @template()
+      tmpl
 
     kls.prototype.retrieve = (selector) ->
       @template().cache[selector] ||= @template().content.querySelector(selector).cloneNode(true)

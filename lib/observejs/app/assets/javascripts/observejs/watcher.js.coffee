@@ -17,7 +17,7 @@ class Watcher
   observed: (mutations) =>
     mutations.forEach (mutation) =>
       if mutation.type == 'attributes'
-        ObserveJS.Creator.update(target)
+        ObserveJS.Creator.update(mutation.target)
       else
         @add(mutation.addedNodes)
         @destroy(mutation.removedNodes)

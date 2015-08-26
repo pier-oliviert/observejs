@@ -11,6 +11,7 @@ class Creator
     model = el.getAttribute(ObserveJS.attributeName)
     if ObserveJS.cache[model]?
       if el.instance?
+        el.loaded()
         return
 
       el.instance = new ObserveJS.cache[model](el)

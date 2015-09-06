@@ -77,7 +77,7 @@ class XHR
       throw "Cannot send a request to the server if the element isn't a Form or if the element doesn't have the HREF attributes: <div href>"
       return
 
-    if @method == 'GET' && @data.any()
+    if /get/i.test(@method) && @data.any()
       parser = document.createElement('a')
       parser.href = action
       params = parser.search.substring(1).split('&')

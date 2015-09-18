@@ -39,4 +39,6 @@ class Creator
     el.instance.on.events?.forEach (event) ->
       event[1].removeEventListener(event[0], event[2])
 
+    delete el.instance
+
 @ObserveJS.Creator = new Creator()

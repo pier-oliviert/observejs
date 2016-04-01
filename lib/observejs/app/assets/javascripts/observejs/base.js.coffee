@@ -15,14 +15,11 @@ class ObserveJS
   bind: (name, kls) =>
     @cache[name] = kls
 
-    kls.prototype.template = () ->
+    kls.prototype.template = (selector) ->
       tmpl = @element().querySelector("template[for='#{name}']")
       unless tmpl?
         throw "Template Error: Couldn't find a template matching #{name}"
         return
-      tmpl
-
-    kls.prototype.retrieve = (selector) ->
-      @element().querySelector(selector) || @template().content.querySelector(selector).cloneNode(true)
+      tmpl.content.querySelector(selector).cloneNode(true)
 
 window.ObserveJS = new ObserveJS()

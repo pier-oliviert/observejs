@@ -20,12 +20,13 @@ class Creator
         el
 
       el.instance.on = (event, target, callback) ->
-        callback = callback.bind(el.instance)
         if callback?
           el.instance.on.events.push([event, target, callback])
         else
           callback = target
           target = el
+
+        callback = callback.bind(el.instance)
         target.addEventListener(event, callback)
 
       el.instance.on.events = []

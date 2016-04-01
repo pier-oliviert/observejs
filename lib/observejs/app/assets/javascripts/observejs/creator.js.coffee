@@ -34,7 +34,7 @@ class Creator
         el.instance.loaded()
 
     else
-      throw "error: #{model} is not registered. Add your model with ObserveJS.Models.add(#{model})"
+      throw "error: #{model} is not registered. Add your model with ObserveJS.bind(#{model}, {})"
 
   destroy: (el) =>
     el.instance.on.events?.forEach (event) ->

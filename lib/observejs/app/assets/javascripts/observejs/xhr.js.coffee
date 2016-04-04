@@ -31,6 +31,26 @@ class XHRData
 
     formData
 
+  urlEncoded: (action) =>
+    parser = document.createElement('a')
+    parser.href = action
+    params = parser.search.substring(1).split('&')
+
+    for key in @keys()
+      params.push "#{key}=#{@value(key)}"
+
+    if @form?
+      for element in @form.elements
+        unless element.hasAttribute('name')
+          continue
+
+        type = element.getAttribute("type").toUpperCase() || 'TEXT'
+        if (type != 'FILE' && type != 'RADIO' && type != 'CHECKBOX') || element.checked
+          params.push "#{encodeURIComponent(element.name)}=#{encodeURIComponent(element.value)}"
+
+    parser.search = "?#{params.join("&")}"
+    parser.href
+
 class Response
   constructor: (@xhr) ->
     @xhr.request.addEventListener 'load', @process
@@ -70,6 +90,11 @@ class XHR
 
     @method = el.getAttribute('method') || 'GET'
 
+  open: (method, action) =>
+    @request.open @method, action
+    @request.setRequestHeader 'accept', "*/*;q=0.5, #{@script}"
+    @request.setRequestHeader 'X-Requested-With', "XMLHttpRequest"
+
   send: =>
     action = @request.element.getAttribute('action') || @request.element.getAttribute('href')
 
@@ -77,27 +102,18 @@ class XHR
       throw "Cannot send a request to the server if the element isn't a Form or if the element doesn't have the HREF attributes: <div href>"
       return
 
-    if /get/i.test(@method) && @data.any()
-      parser = document.createElement('a')
-      parser.href = action
-      params = parser.search.substring(1).split('&')
 
-      for key in @data.keys()
-        params.push "#{key}=#{@data.value(key)}"
+    if /post|put/i.test(@method)
+      @open(@method, action)
 
-      parser.search = "?#{params.join("&")}"
-
-      action = parser.href
-
-    @request.open @method, action
-    @request.setRequestHeader 'accept', "*/*;q=0.5, #{@script}"
-    @request.setRequestHeader 'X-Requested-With', "XMLHttpRequest"
-
-    if !/get/i.test(@method.test)
       token = document.querySelector('meta[name=csrf-token]').getAttribute('content')
       @request.setRequestHeader 'X-CSRF-Token', token
 
-    @request.send(@data.serialize())
+      @request.send(@data.serialize())
+    else
+      action = @data.urlEncoded(action)
+      @open(@method, action)
+      @request.send()
 
 
 ObserveJS.XHR = XHR

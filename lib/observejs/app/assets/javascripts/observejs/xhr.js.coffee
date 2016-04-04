@@ -93,7 +93,7 @@ class XHR
     @request.setRequestHeader 'accept', "*/*;q=0.5, #{@script}"
     @request.setRequestHeader 'X-Requested-With', "XMLHttpRequest"
 
-    if @method != 'GET'
+    if /get/i.test(@method.test)
       token = document.querySelector('meta[name=csrf-token]').getAttribute('content')
       @request.setRequestHeader 'X-CSRF-Token', token
 

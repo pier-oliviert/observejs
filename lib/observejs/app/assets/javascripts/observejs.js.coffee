@@ -2,6 +2,7 @@
 #= require 'observejs/base'
 #= require 'observejs/watcher'
 #= require 'observejs/creator'
+#= require 'observejs/observer'
 #= require 'observejs/xhr'
 
 if document.readyState == 'complete'

@@ -22,7 +22,7 @@ class Creator
       observer = new ObserveJS.Observer(el.instance)
 
       el.instance.observe = (observer, key, callback) ->
-        observer.bind(key, callback)
+        observer.bind(key, callback.bind(el.instance))
 
       el.instance.observe = el.instance.observe.bind(el.instance, observer)
       el.instance.observe.observer = observer

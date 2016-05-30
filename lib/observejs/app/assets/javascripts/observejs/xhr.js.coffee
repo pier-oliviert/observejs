@@ -103,7 +103,7 @@ class XHR
       return
 
 
-    if /post|put/i.test(@method)
+    if /post|put|delete/i.test(@method)
       @open(@method, action)
 
       token = document.querySelector('meta[name=csrf-token]').getAttribute('content')

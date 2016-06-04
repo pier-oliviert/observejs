@@ -20,6 +20,6 @@ class ObserveJS
       unless tmpl?
         throw "Template Error: Couldn't find a template matching #{name}"
         return
-      tmpl.content.querySelector(selector).cloneNode(true)
+      (tmpl.content || tmpl).querySelector(selector).cloneNode(true)
 
 window.ObserveJS = new ObserveJS()

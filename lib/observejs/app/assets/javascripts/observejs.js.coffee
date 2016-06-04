@@ -1,3 +1,4 @@
+#= require_tree './polyfills'
 #= require 'observejs/ext'
 #= require 'observejs/base'
 #= require 'observejs/watcher'
